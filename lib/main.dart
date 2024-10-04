@@ -1,6 +1,6 @@
+import 'package:coffee_house/ui/pages/FirstPage.dart';
+import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:flutter/material.dart';
-
-import 'ProductInfo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
           scaffoldBackgroundColor: Color(0xfff9f9f9)
       ),
-      home: ProductInfoPage()
+      home: MyHomePage(title: "my app")
     );
   }
 }
@@ -34,36 +34,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  int _currentIndex = 0;
+  List<Widget> screens = [
+      ProductInfoPage(),
+      FirstPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Хасанбаев Икромжон Абделахатович',
-            ),
-            Text(
-              'ИКБО-07-21',
-            ),
-            Text(
-              'Номер студентческого: 21И1802'
-            )
-          ],
-        ),
+      body: screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Product Info',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+        ],
       ),
     );
   }
