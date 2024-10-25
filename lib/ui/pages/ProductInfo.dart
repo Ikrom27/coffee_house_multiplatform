@@ -7,25 +7,12 @@ class ProductInfoPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _ProductPageState(
-        product: Product(
-            name: "Americano",
-            price: 1.0,
-            description: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk the",
-            imageUrl: "https://avatars.mds.yandex.net/get-altay/11381866/2a0000018c58b41338dee13b0dbe5c852462/XXL_height"
-        )
-    );
+    return _ProductPageState();
   }
-
 }
 
 class _ProductPageState extends State<ProductInfoPage> {
   ProductSize _size = ProductSize.small;
-  Product product;
-
-  _ProductPageState({
-    required this.product
-  });
 
   void _changeSize(ProductSize size){
     setState(() {
@@ -35,6 +22,7 @@ class _ProductPageState extends State<ProductInfoPage> {
 
   @override
   Widget build(BuildContext context) {
+    var product = ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -54,7 +42,7 @@ class _ProductPageState extends State<ProductInfoPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 product.name,
                 textAlign: TextAlign.start,
@@ -63,13 +51,13 @@ class _ProductPageState extends State<ProductInfoPage> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Container(
                 width: double.infinity,
                 height: 1,
                 color: Colors.grey,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               const Text(
                 "Description",
                 textAlign: TextAlign.start,
@@ -78,12 +66,12 @@ class _ProductPageState extends State<ProductInfoPage> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 product.description,
                 textAlign: TextAlign.start,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               const Text(
                 "Size",
                 textAlign: TextAlign.start,
@@ -92,7 +80,7 @@ class _ProductPageState extends State<ProductInfoPage> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -125,6 +113,4 @@ class _ProductPageState extends State<ProductInfoPage> {
       ),
     );
   }
-
-
 }

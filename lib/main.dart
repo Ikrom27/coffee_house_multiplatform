@@ -1,16 +1,24 @@
-import 'package:coffee_house/ui/pages/FirstPage.dart';
+import 'package:coffee_house/ui/pages/CartPage.dart';
+import 'package:coffee_house/ui/pages/HistoryPage.dart';
 import 'package:coffee_house/ui/pages/MenuPage.dart';
 import 'package:coffee_house/ui/pages/ProductInfo.dart';
+import 'package:coffee_house/ui/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    initialRoute: '/menu',
+    routes: {
+      '/menu': (context) => MyHomePage(title: 'Product App'), // основной экран
+      '/menu/info': (context) => ProductInfoPage(),
+    },
+  ));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,15 +44,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  List<Widget> screens = [
-      ProductInfoPage(),
-      MenuPage()
+
+  final List<Widget> _screens = [
+    MenuPage(),
+    CartPage(),
+    HistoryPage(),
+    ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_currentIndex],
+      body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index) {
@@ -52,17 +63,28 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Product Info',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history_edu),
+            label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            label: 'Profile',
           ),
         ],
       ),
     );
   }
 }
+

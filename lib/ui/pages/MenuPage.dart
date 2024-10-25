@@ -1,10 +1,9 @@
 
 import 'package:coffee_house/test/ProductList.dart';
 import 'package:coffee_house/ui/components/ProductCard.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../data/Models.dart';
+
 
 class MenuPage extends StatelessWidget {
   static List<Product> products = ProductListTest().data;
@@ -18,13 +17,25 @@ class MenuPage extends StatelessWidget {
         crossAxisSpacing: 15,
         mainAxisSpacing: 24,
         children: products.map((product) =>
-          ProductCard(
-              label: product.name,
-              imageUrl: product.imageUrl,
-              price: product.price)
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  '/menu/info',
+                  arguments: product,
+                );
+              },
+              child: ProductCard(
+                label: product.name,
+                imageUrl: product.imageUrl,
+                price: product.price,
+              ),
+            ),
         ).toList(),
       ),
     );
   }
-
 }
+
+
+
