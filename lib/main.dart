@@ -1,4 +1,5 @@
 import 'package:coffee_house/ui/pages/FirstPage.dart';
+import 'package:coffee_house/ui/pages/MenuPage.dart';
 import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   List<Widget> screens = [
       ProductInfoPage(),
-      FirstPage()
+      MenuPage()
   ];
 
   @override
