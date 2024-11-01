@@ -32,7 +32,7 @@ List<ProductModel> CardTestData = [
 ];
 
 class LocalDataSource {
-  Future<List<ProductModel>> getCartProducts() async {
+  Future<List<ProductModel>> getCartProducts() {
     return Future.delayed(const Duration(seconds: 3), () => CardTestData);
   }
 }

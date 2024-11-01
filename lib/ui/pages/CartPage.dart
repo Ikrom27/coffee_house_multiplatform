@@ -20,12 +20,12 @@ class _CartPageState extends State<CartPage> {
   void updateData() async {
     List<Product> data = (await repository.getCartProducts())
         .map((model) =>
-        Product(
-            name: model.name,
-            price: model.price,
-            description: model.description,
-            imageUrl: model.imageUrl
-        )
+            Product(
+                name: model.name,
+                price: model.price,
+                description: model.description,
+                imageUrl: model.imageUrl
+            )
     ).toList();
     setState(() {
       _data = data;
