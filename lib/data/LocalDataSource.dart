@@ -1,6 +1,6 @@
 import 'package:coffee_house/data/Models.dart';
 
-List<ProductModel> MenuTestData = [
+List<ProductModel> CardTestData = [
   ProductModel(
       id: 1,
       name: "Americano",
@@ -31,8 +31,8 @@ List<ProductModel> MenuTestData = [
   ),
 ];
 
-class RemoteDataSource {
-  Future<List<ProductModel>> fetchProducts() {
-    return Future.delayed(const Duration(seconds: 3), () => MenuTestData);
+class LocalDataSource {
+  Future<List<ProductModel>> getCartProducts() async {
+    return Future.delayed(const Duration(seconds: 3), () => CardTestData);
   }
 }
