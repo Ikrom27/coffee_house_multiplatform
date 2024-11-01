@@ -1,12 +1,11 @@
 
-import 'package:coffee_house/test/ProductList.dart';
+import 'package:coffee_house/data/AppRepository.dart';
 import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
-import '../../data/Models.dart';
 
 
 class MenuPage extends StatelessWidget {
-  static List<Product> products = ProductListTest().data;
+  static AppRepository repository = AppRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class MenuPage extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 24,
-        children: products.map((product) =>
+        children: repository.getProducts().map((product) =>
             GestureDetector(
               onTap: () {
                 Navigator.pushNamed(

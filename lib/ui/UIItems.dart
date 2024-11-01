@@ -1,12 +1,16 @@
-class ProductModel {
-  final int id;
+enum ProductSize {
+  small,
+  medium,
+  large
+}
+
+class Product {
   final String name;
   final double price;
   final String description;
   final String imageUrl;
 
-  ProductModel({
-    required this.id,
+  Product({
     required this.name,
     required this.price,
     required this.description,
