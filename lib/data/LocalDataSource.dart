@@ -1,6 +1,6 @@
 import 'package:coffee_house/data/Models.dart';
 
-List<ProductModel> CardTestData = [
+List<ProductModel> cardTestData = [
   ProductModel(
       id: 1,
       name: "Americano",
@@ -33,6 +33,6 @@ List<ProductModel> CardTestData = [
 
 class LocalDataSource {
   Future<List<ProductModel>> getCartProducts() {
-    return Future.delayed(const Duration(seconds: 3), () => CardTestData);
+    return Future.delayed(const Duration(seconds: 3), () => cardTestData);
   }
 }

@@ -15,18 +15,18 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage>{
-  static AppRepository repository = AppRepository();
-  static List<Product> products = [];
+  static final AppRepository _repository = AppRepository();
+  static List<Product> _data = [];
 
   void updateProducts(List<Product> data){
     setState(() {
-      products = data;
+      _data = data;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    repository
+    _repository
         .getMenuProducts()
         .then((data) {
       updateProducts(
@@ -46,7 +46,7 @@ class _MenuPageState extends State<MenuPage>{
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 24,
-        children: showContent(products, context),
+        children: showContent(_data, context),
       ),
     );
   }

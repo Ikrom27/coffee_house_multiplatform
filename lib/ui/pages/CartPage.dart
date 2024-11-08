@@ -14,11 +14,11 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  AppRepository repository = AppRepository();
-  List<Product> _data = [];
+  static final AppRepository _repository = AppRepository();
+  static List<Product> _data = [];
 
   void updateData() async {
-    List<Product> data = (await repository.getCartProducts())
+    List<Product> data = (await _repository.getCartProducts())
         .map((model) =>
             Product(
                 name: model.name,
