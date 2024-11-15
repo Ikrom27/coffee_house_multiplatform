@@ -4,8 +4,10 @@ import 'package:coffee_house/data/RemoteDataSource.dart';
 import 'Models.dart';
 
 class AppRepository {
-  static final RemoteDataSource _remoteDataSource = RemoteDataSource();
-  static final LocalDataSource _localDataSource = LocalDataSource();
+  final RemoteDataSource _remoteDataSource;
+  final LocalDataSource _localDataSource;
+
+  AppRepository(this._remoteDataSource, this._localDataSource);
 
   Future<List<ProductModel>> getMenuProducts(){
     return _remoteDataSource.fetchProducts();

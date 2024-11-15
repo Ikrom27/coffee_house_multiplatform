@@ -5,7 +5,10 @@ import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:coffee_house/ui/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
+import 'di/ServiceLocator.dart';
+
 void main() {
+  setupLocator();
   runApp(MaterialApp(
     initialRoute: '/menu',
     routes: {

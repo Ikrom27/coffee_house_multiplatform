@@ -2,6 +2,7 @@ import 'package:coffee_house/data/AppRepository.dart';
 import 'package:coffee_house/test/ProductList.dart';
 import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../UIItems.dart';
 
@@ -14,7 +15,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  static final AppRepository _repository = AppRepository();
+  static final AppRepository _repository = GetIt.instance<AppRepository>();
   static List<Product> _data = [];
 
   void updateData() async {
