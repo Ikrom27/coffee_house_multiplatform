@@ -1,12 +1,12 @@
 import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../providers/providers.dart';
+import '../../providers/menu_provider.dart';
 
 class MenuPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productAsyncValue = ref.watch(productListProvider);
+    final productAsyncValue = ref.watch(menuProviderProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +51,7 @@ class MenuPage extends ConsumerWidget {
               const SizedBox(height: 8),
               ElevatedButton(
                 onPressed: () {
-                  ref.refresh(productListProvider);
+                  ref.refresh(menuProviderProvider);
                 },
                 child: const Text('Повторить'),
               ),

@@ -1,13 +1,12 @@
+import 'package:coffee_house/providers/repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_house/data/AppRepository.dart';
 import 'package:coffee_house/ui/components/UIItems.dart';
-import 'package:get_it/get_it.dart';
 
-part 'providers.g.dart';
+part 'menu_provider.g.dart';
 
 @riverpod
-Future<List<Product>> productList(Ref ref) async {
+Future<List<Product>> menuProvider(Ref ref) async {
   final repository = ref.watch(appRepositoryProvider);
   final models = await repository.getMenuProducts();
   return models.map((model) => Product(
@@ -16,9 +15,4 @@ Future<List<Product>> productList(Ref ref) async {
     description: model.description,
     imageUrl: model.imageUrl,
   )).toList();
-}
-
-@riverpod
-AppRepository appRepository(Ref ref) {
-  return GetIt.instance<AppRepository>();
 }

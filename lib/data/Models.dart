@@ -1,7 +1,7 @@
 class ProductModel {
   final int id;
   final String name;
-  final double price;
+  final int price;
   final String description;
   final String imageUrl;
 
@@ -21,14 +21,24 @@ class ProductModel {
       'description': String description,
       'price': int price,
       'image_url': String imageUrl,
-    } => ProductModel(
-        id: id,
-        name: name,
-        price: price.toDouble(),
-        description: description,
-        imageUrl: imageUrl
+      } => ProductModel(
+          id: id,
+          name: name,
+          price: price,
+          description: description,
+          imageUrl: imageUrl
       ),
-    _ => throw const FormatException("Product convert fail")
+      _ => throw const FormatException("Product convert fail")
+    };
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'price': price,
+      'description': description,
+      'imageUrl': imageUrl,
     };
   }
 

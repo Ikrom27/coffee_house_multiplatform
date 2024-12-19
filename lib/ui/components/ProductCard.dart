@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 Widget ProductCard({
   required String label,
   required String imageUrl,
-  required double price,
+  required int price,
 }) {
   return SizedBox(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: double.infinity,
+          width: 128,
           height: 128,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
