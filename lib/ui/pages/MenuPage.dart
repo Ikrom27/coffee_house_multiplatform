@@ -1,76 +1,64 @@
-
-import 'package:coffee_house/data/AppRepository.dart';
 import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../providers/providers.dart';
 
-import '../UIItems.dart';
-
-
-class MenuPage extends StatefulWidget {
+class MenuPage extends ConsumerWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _MenuPageState();
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productAsyncValue = ref.watch(productListProvider);
 
-}
-
-class _MenuPageState extends State<MenuPage>{
-  static final AppRepository _repository = GetIt.instance<AppRepository>();
-  static List<Product> _data = [];
-
-  void updateProducts(List<Product> data){
-    setState(() {
-      _data = data;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _repository
-        .getMenuProducts()
-        .then((data) {
-      updateProducts(
-          data.map((model) =>
-              Product(
-                name: model.name,
-                price: model.price,
-                description: model.description,
-                imageUrl: model.imageUrl
-            )
-          ).toList()
-      );
-    });
     return Scaffold(
-      body: GridView.count(
-        padding: EdgeInsets.all(16),
-        crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 24,
-        children: showContent(_data, context),
+      appBar: AppBar(
+        title: const Text('Меню'),
+      ),
+      body: productAsyncValue.when(
+        data: (products) {
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 24,
+              childAspectRatio: 0.75,
+            ),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              final product = products[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/menu/info',
+                    arguments: product,
+                  );
+                },
+                child: ProductCard(
+                  label: product.name,
+                  imageUrl: product.imageUrl,
+                  price: product.price,
+                ),
+              );
+            },
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Ошибка загрузки: $error'),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () {
+                  ref.refresh(productListProvider);
+                },
+                child: const Text('Повторить'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
-
-  List<Widget> showContent(List<Product> data, BuildContext context){
-    return data.map((product) =>
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              '/menu/info',
-              arguments: product,
-            );
-          },
-          child: ProductCard(
-            label: product.name,
-            imageUrl: product.imageUrl,
-            price: product.price,
-          ),
-        ),
-    ).toList();
-  }
 }
-
-
-

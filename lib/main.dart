@@ -4,20 +4,24 @@ import 'package:coffee_house/ui/pages/MenuPage.dart';
 import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:coffee_house/ui/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'di/ServiceLocator.dart';
 
 void main() {
   setupLocator();
-  runApp(MaterialApp(
-    initialRoute: '/menu',
-    routes: {
-      '/menu': (context) => MyHomePage(title: 'Product App'), // основной экран
-      '/menu/info': (context) => ProductInfoPage(),
-    },
-  ));
+  runApp(
+      ProviderScope(
+          child: MaterialApp(
+            initialRoute: '/menu',
+            routes: {
+              '/menu': (context) => MyHomePage(title: 'Product App'),
+              '/menu/info': (context) => ProductInfoPage(),
+            },
+          )
+      )
+  );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
