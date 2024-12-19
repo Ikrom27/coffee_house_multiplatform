@@ -4,7 +4,7 @@ import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../UIItems.dart';
+import '../components/UIItems.dart';
 
 class CartPage extends StatefulWidget {
   @override

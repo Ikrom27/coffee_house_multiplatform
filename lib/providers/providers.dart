@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:coffee_house/data/AppRepository.dart';
-import 'package:coffee_house/ui/UIItems.dart';
+import 'package:coffee_house/ui/components/UIItems.dart';
 import 'package:get_it/get_it.dart';
 
 part 'providers.g.dart';

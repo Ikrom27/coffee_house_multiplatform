@@ -1,4 +1,4 @@
-import '../ui/UIItems.dart';
+import '../ui/components/UIItems.dart';
 
 
 class ProductListTest {

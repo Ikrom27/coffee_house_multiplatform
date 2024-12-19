@@ -5,6 +5,7 @@ import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:coffee_house/ui/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'di/ServiceLocator.dart';
 
@@ -70,24 +71,43 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         selectedItemColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.grey,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: SvgPicture.asset(
+              'assets/icons/home.svg',
+              width: 24,
+              height: 24,
+              color: _currentIndex == 0
+                  ? Theme.of(context).primaryColor
+                  : Colors.grey,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: SvgPicture.asset(
+              'assets/icons/cart.svg',
+              width: 24,
+              height: 24,
+              color: _currentIndex == 1
+                  ? Theme.of(context).primaryColor
+                  : Colors.grey,
+            ),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history_edu),
+            icon: SvgPicture.asset(
+              'assets/icons/history.svg',
+              width: 24,
+              height: 24,
+              color: _currentIndex == 2
+                  ? Theme.of(context).primaryColor
+                  : Colors.grey,
+            ),
             label: 'History',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Profile',
           ),
         ],
       ),
