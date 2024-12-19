@@ -13,7 +13,7 @@ Widget ProductCard({
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 128,
+          width: double.infinity,
           height: 128,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
