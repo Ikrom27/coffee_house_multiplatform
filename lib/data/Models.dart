@@ -14,22 +14,13 @@ class ProductModel {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json){
-    return switch (json) {
-      {
-      'id': int id,
-      'name': String name,
-      'description': String description,
-      'price': int price,
-      'image_url': String imageUrl,
-      } => ProductModel(
-          id: id,
-          name: name,
-          price: price,
-          description: description,
-          imageUrl: imageUrl
-      ),
-      _ => throw const FormatException("Product convert fail")
-    };
+    return ProductModel(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      price: (json['price'] as num).toInt(),
+      description: json['description'] as String,
+      imageUrl: json['image_url'] as String? ?? json['imageUrl'] as String,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -38,7 +29,7 @@ class ProductModel {
       'name': name,
       'price': price,
       'description': description,
-      'imageUrl': imageUrl,
+      'image_url': imageUrl,
     };
   }
 

@@ -10,6 +10,7 @@ Future<List<Product>> menuProvider(Ref ref) async {
   final repository = ref.watch(appRepositoryProvider);
   final models = await repository.getMenuProducts();
   return models.map((model) => Product(
+    id: model.id,
     name: model.name,
     price: model.price,
     description: model.description,

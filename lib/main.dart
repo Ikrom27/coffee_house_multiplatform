@@ -1,15 +1,17 @@
+import 'dart:io';
+
+import 'package:coffee_house/di/ServiceLocator.dart';
 import 'package:coffee_house/ui/pages/CartPage.dart';
 import 'package:coffee_house/ui/pages/HistoryPage.dart';
 import 'package:coffee_house/ui/pages/MenuPage.dart';
 import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:coffee_house/ui/pages/ProfilePage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'di/ServiceLocator.dart';
-
-void main() {
+Future<void> main() async {
   setupLocator();
   runApp(
       ProviderScope(

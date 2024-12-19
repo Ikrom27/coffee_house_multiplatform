@@ -1,5 +1,4 @@
 import 'package:coffee_house/data/AppRepository.dart';
-import 'package:coffee_house/test/ProductList.dart';
 import 'package:coffee_house/ui/components/ProductCard.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -22,6 +21,7 @@ class _CartPageState extends State<CartPage> {
     List<Product> data = (await _repository.getCartProducts())
         .map((model) =>
             Product(
+                id: model.id,
                 name: model.name,
                 price: model.price,
                 description: model.description,
