@@ -9,6 +9,8 @@ class OrderNotifier extends _$OrderNotifier {
   @override
   Future<String> build(List<int> coffeeIds) async {
     final repository = ref.watch(appRepositoryProvider);
-    return await repository.createOrder(coffeeIds);
+    final orderId = await repository.createOrder(coffeeIds);
+    await repository.clearCart();
+    return orderId;
   }
 }
