@@ -4,7 +4,7 @@ import '../../providers/repository_provider.dart';
 
 part 'order_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class OrderNotifier extends _$OrderNotifier {
   @override
   Future<String> build(List<int> coffeeIds) async {

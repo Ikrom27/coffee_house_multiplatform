@@ -21,7 +21,17 @@ class CartNotifier extends _$CartNotifier {
     state = await AsyncValue.guard(() async {
       return await repository.getCartProducts();
     });
+
   }
+
+  void refreshCart() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final repository = ref.read(appRepositoryProvider);
+      return await repository.getCartProducts();
+    });
+  }
+
 
   Future<void> clearCart() async {
     final repository = ref.read(appRepositoryProvider);

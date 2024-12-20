@@ -87,19 +87,20 @@ class CartPage extends ConsumerWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 final coffeeIds = ref.watch(cartNotifierProvider).maybeWhen(
                   data: (cartItems) => cartItems.map((item) => item.id).toList(),
                   orElse: () => <int>[],
                 );
 
                 if (coffeeIds.isNotEmpty) {
-                  Navigator.push(
+                  await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => OrderStatusPage(coffeeIds: coffeeIds),
                     ),
                   );
+                  ref.read(cartNotifierProvider.notifier).refreshCart();
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Корзина пуста!')),
