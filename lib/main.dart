@@ -4,6 +4,7 @@ import 'package:coffee_house/di/ServiceLocator.dart';
 import 'package:coffee_house/ui/pages/CartPage.dart';
 import 'package:coffee_house/ui/pages/HistoryPage.dart';
 import 'package:coffee_house/ui/pages/MenuPage.dart';
+import 'package:coffee_house/ui/pages/OrderStatusPage.dart';
 import 'package:coffee_house/ui/pages/ProductInfo.dart';
 import 'package:coffee_house/ui/pages/ProfilePage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +23,7 @@ Future<void> main() async {
             routes: {
               '/menu': (context) => MyHomePage(title: 'Product App'),
               '/menu/info': (context) => ProductInfoPage(),
+              '/order/status': (context) => OrderStatusPage(coffeeIds: [],),
             },
           )
       )
