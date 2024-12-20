@@ -53,15 +53,22 @@ class DatabaseManager {
           version: 1,
           onCreate: (db, version) async {
             await db.execute('''
-              CREATE TABLE cart (
-                id INTEGER PRIMARY KEY,
-                name TEXT,
-                price REAL,
-                description TEXT,
-                image_url TEXT,
-                count INTEGER DEFAULT 1
-              )
-            ''');
+            CREATE TABLE cart (
+              id INTEGER PRIMARY KEY,
+              name TEXT,
+              price REAL,
+              description TEXT,
+              image_url TEXT,
+              count INTEGER DEFAULT 1
+            )
+          ''');
+            await db.execute('''
+            CREATE TABLE orders (
+              id TEXT PRIMARY KEY,
+              date_time TEXT,
+              total_price REAL
+            )
+          ''');
           },
         ),
       );
@@ -71,15 +78,22 @@ class DatabaseManager {
         version: 1,
         onCreate: (db, version) async {
           await db.execute('''
-              CREATE TABLE cart (
-                id INTEGER PRIMARY KEY,
-                name TEXT,
-                price REAL,
-                description TEXT,
-                image_url TEXT,
-                count INTEGER DEFAULT 1
-              )
-            ''');
+            CREATE TABLE cart (
+              id INTEGER PRIMARY KEY,
+              name TEXT,
+              price REAL,
+              description TEXT,
+              image_url TEXT,
+              count INTEGER DEFAULT 1
+            )
+        ''');
+          await db.execute('''
+            CREATE TABLE orders (
+              id TEXT PRIMARY KEY,
+              date_time TEXT,
+              total_price REAL
+            )
+        ''');
         },
       );
     }

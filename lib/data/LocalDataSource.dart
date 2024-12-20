@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'DatabaseManager.dart';
 import 'models/CartProductModel.dart';
+import 'models/OrderModel.dart';
 
 class LocalDataSource {
   final DatabaseManager _dbManager;
@@ -61,4 +62,20 @@ class LocalDataSource {
     final db = await _dbManager.database;
     await db.delete('cart');
   }
+
+  Future<void> saveOrder(OrderModel order) async {
+    final db = await _dbManager.database;
+    await db.insert(
+      'orders',
+      order.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<OrderModel>> getOrders() async {
+    final db = await _dbManager.database;
+    final maps = await db.query('orders');
+    return maps.map((map) => OrderModel.fromJson(map)).toList();
+  }
+
 }

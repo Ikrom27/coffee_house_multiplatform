@@ -1,6 +1,7 @@
 import 'package:coffee_house/data/LocalDataSource.dart';
 import 'package:coffee_house/data/RemoteDataSource.dart';
 import 'package:coffee_house/data/models/CartProductModel.dart';
+import 'models/OrderModel.dart';
 import 'models/ProductModel.dart';
 
 class AppRepository {
@@ -31,5 +32,13 @@ class AppRepository {
 
   Future<void> clearCart() {
     return _localDataSource.clearCart();
+  }
+
+  Future<void> saveOrder(OrderModel order) {
+    return _localDataSource.saveOrder(order);
+  }
+
+  Future<List<OrderModel>> getOrders() {
+    return _localDataSource.getOrders();
   }
 }
