@@ -13,6 +13,11 @@ class AppRepository {
     return _remoteDataSource.fetchProducts();
   }
 
+  Future<String> createOrder(List<CartProductModel> products) {
+    final coffeeIds = products.map((product) => product.id).toList();
+    return _remoteDataSource.createOrder(coffeeIds: coffeeIds);
+  }
+
   Future<List<CartProductModel>> getCartProducts() {
     return _localDataSource.getCartProducts();
   }

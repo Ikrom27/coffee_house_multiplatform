@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574919669629",
+    "project_id": "coffee-house-8b036",
+    "storage_bucket": "coffee-house-8b036.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574919669629:android:612f26be4191ae6856fe14",
+        "android_client_info": {
+          "package_name": "ru.ikrom.coffee_house"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr7RbgqYLS-8f7ixr_ACOWBFVdFvAAMv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

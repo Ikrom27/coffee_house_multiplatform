@@ -1,5 +1,6 @@
 import 'package:coffee_house/data/AppRepository.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import '../../providers/cart_provider.dart';
 import '../components/CartItem.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -85,7 +86,7 @@ class CartPage extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                print("Order placed!");
+                GetIt.instance<AppRepository>().createOrder();
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
