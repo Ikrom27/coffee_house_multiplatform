@@ -1,6 +1,6 @@
-import 'package:coffee_house/data/Models.dart';
+import 'package:coffee_house/data/models/ProductModel.dart';
 
-class CartProductEntity {
+class CartProductModel {
   final int id;
   final String name;
   final int price;
@@ -8,7 +8,7 @@ class CartProductEntity {
   final String imageUrl;
   final int count;
 
-  CartProductEntity({
+  CartProductModel({
     required this.id,
     required this.name,
     required this.price,
@@ -17,8 +17,8 @@ class CartProductEntity {
     required this.count,
   });
 
-  factory CartProductEntity.fromJson(Map<String, dynamic> json) {
-    return CartProductEntity(
+  factory CartProductModel.fromJson(Map<String, dynamic> json) {
+    return CartProductModel(
       id: json['id'] as int,
       name: json['name'] as String,
       price: (json['price'] as num).toInt(),
@@ -39,14 +39,14 @@ class CartProductEntity {
     };
   }
 
-  factory CartProductEntity.fromModel(ProductModel model, {required int count}) {
-    return CartProductEntity(
+  factory CartProductModel.fromModel(ProductModel model) {
+    return CartProductModel(
       id: model.id,
       name: model.name,
       price: model.price,
       description: model.description,
       imageUrl: model.imageUrl,
-      count: count,
+      count: 1,
     );
   }
 

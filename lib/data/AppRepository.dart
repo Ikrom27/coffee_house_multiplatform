@@ -1,6 +1,7 @@
 import 'package:coffee_house/data/LocalDataSource.dart';
 import 'package:coffee_house/data/RemoteDataSource.dart';
-import 'Models.dart';
+import 'package:coffee_house/data/models/CartProductModel.dart';
+import 'models/ProductModel.dart';
 
 class AppRepository {
   final RemoteDataSource _remoteDataSource;
@@ -12,12 +13,12 @@ class AppRepository {
     return _remoteDataSource.fetchProducts();
   }
 
-  Future<List<ProductModel>> getCartProducts() {
+  Future<List<CartProductModel>> getCartProducts() {
     return _localDataSource.getCartProducts();
   }
 
   Future<void> addProductToCart(ProductModel product) {
-    return _localDataSource.addProductToCart(product);
+    return _localDataSource.addProductToCart(CartProductModel.fromModel(product));
   }
 
   Future<void> removeProductFromCart(int productId) {

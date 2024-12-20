@@ -3,7 +3,7 @@ import 'package:coffee_house/ui/components/Buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/Models.dart';
+import '../../data/models/ProductModel.dart';
 import '../../providers/product_info_provider.dart';
 
 class ProductInfoPage extends ConsumerStatefulWidget {
@@ -75,43 +75,6 @@ class _ProductInfoPageState extends ConsumerState<ProductInfoPage> {
                     product.description,
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    "Size",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizeButton(
-                        isActive: _size == ProductSize.small,
-                        onPressed: () {
-                          _changeSize(ProductSize.small);
-                        },
-                        label: "Small",
-                      ),
-                      SizeButton(
-                        isActive: _size == ProductSize.medium,
-                        onPressed: () {
-                          _changeSize(ProductSize.medium);
-                        },
-                        label: "Medium",
-                      ),
-                      SizeButton(
-                        isActive: _size == ProductSize.large,
-                        onPressed: () {
-                          _changeSize(ProductSize.large);
-                        },
-                        label: "Large",
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -141,8 +104,8 @@ class _ProductInfoPageState extends ConsumerState<ProductInfoPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 12,
+                        horizontal: 48,
+                        vertical: 24,
                       ),
                     ),
                     onPressed: () {
@@ -160,6 +123,7 @@ class _ProductInfoPageState extends ConsumerState<ProductInfoPage> {
                       "Add to cart",
                       style: TextStyle(
                         fontSize: 16,
+                        color: Colors.white,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:coffee_house/data/Models.dart';
+import 'package:coffee_house/data/models/ProductModel.dart';
 import 'package:http/http.dart' as http;
 
 String baseUrl = "https://bbaupg6vmhmlgvvc816r.containers.yandexcloud.net";

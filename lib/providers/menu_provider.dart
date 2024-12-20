@@ -4,9 +4,8 @@ import 'package:coffee_house/ui/components/UIItems.dart';
 
 part 'menu_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class MenuNotifier extends _$MenuNotifier {
-  @override
   Future<List<Product>> build() async {
     final repository = ref.watch(appRepositoryProvider);
     final models = await repository.getMenuProducts();
